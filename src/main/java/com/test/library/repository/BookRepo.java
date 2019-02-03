@@ -9,4 +9,8 @@ import java.util.List;
 @Repository
 public interface BookRepo extends JpaRepository<Book, Long>{
     List<Book> findAllByTitleAndIsbn(String title, Long isbn);
+
+    List<Book> findAllByTitle(String title);
+
+
 }

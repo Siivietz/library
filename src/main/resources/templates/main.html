@@ -8,7 +8,7 @@
     <input type="submit" value="Wyszukaj">
 
     <tr th:each="book : ${books}">
-        <td th:text="${book.bookId}">Id :</td>
+        <td th:text="${book.id}">Id :</td>
         <td th:text="${book.title}">Title :</td>
         <td th:text="${book.isbn}">Isbn :</td>
     </tr>

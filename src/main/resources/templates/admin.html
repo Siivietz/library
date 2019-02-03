@@ -1,8 +1,13 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Admin</title>
 </head>
 <body>
-Cos tu jest
+<form action="/admin" method="POST">
+    Tytuł: <input type="text" name="title"><br>
+    Autor: <input type="text" name="author_id"><br>
+    ISBN:<input type="number" name="isbn"><br>
+    <input type="submit" value="Dodaj">
+</form>
 </body>
 </html>

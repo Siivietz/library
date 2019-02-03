@@ -16,12 +16,13 @@ public class MainController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String getMainPage(Model model) {
+        model.addAttribute("books", bookService.findAll());
         return "main";
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String getSearchResult(@RequestParam String title, Model model) {
-        model.addAttribute("books", bookService.getBooksByTitle(title));
+        model.addAttribute("books", bookService.findAllByTitle(title));
         return "main";
     }
 }
