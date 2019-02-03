@@ -3,15 +3,32 @@
     <title>Main</title>
 </head>
 <body>
-<form action="/main" method="POST">
-    Tytuł: <input type="text" name="title"><br>
-    <input type="submit" value="Wyszukaj">
+<h1>Witaj w Bibliotece.</h1>
+<div>
+    <table>
+        Wyszukaj książkę:<br>
+        <form action="/main" method="POST">
+            Tytuł książki:<br>
+            <input  type="text" name="title" th:required="required"><br>
+            Autor:<br>
+            <input type="text" name="author"><br>
+            ISBN:<br>
+            <input type="text" name="isbn"><br>
+            <input type="submit" value="Wyszukaj">
+            <br><br>
 
-    <tr th:each="book : ${books}">
-        <td th:text="${book.id}">Id :</td>
-        <td th:text="${book.title}">Title :</td>
-        <td th:text="${book.isbn}">Isbn :</td>
-    </tr>
-</form>
+            Nr.  Autor:    Tytuł:    ISBN
+            <tr th:each="book : ${books}">
+                <td th:text="${book.id}"></td>
+                <td th:text="${book.author_id}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.isbn}"></td>
+            </tr>
+
+
+
+        </form>
+    </table>
+</div>
 </body>
 </html>
