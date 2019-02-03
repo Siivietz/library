@@ -1,15 +1,16 @@
 package com.test.library.model;
 
-import lombok.*;
+import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
-@AllArgsConstructor(access=AccessLevel.PUBLIC)
-@ToString
-@EqualsAndHashCode
-@Setter(value = AccessLevel.PUBLIC)
-@Getter(value = AccessLevel.PUBLIC)
+@Data
+@Entity
 public class Worker {
+
+    @Id
     private Long id;
     private String login;
     private Date added;

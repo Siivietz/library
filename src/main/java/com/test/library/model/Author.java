@@ -1,17 +1,15 @@
 package com.test.library.model;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "autorzy")
 public class Author {
-@Id
-    private Long authorId;
+    @Id
+    private Long id;
 
-    private String authorName;
+    private String name;
 }

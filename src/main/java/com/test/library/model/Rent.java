@@ -1,14 +1,16 @@
 package com.test.library.model;
 
-import lombok.*;
+import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
-@AllArgsConstructor(access=AccessLevel.PUBLIC)
-@ToString
-@EqualsAndHashCode
-@Getter
-@Setter
+
+@Data
+@Entity
 public class Rent {
+
+    @Id
     private Long id;
     private Long cuntomerId;
     private Long volumeId;

@@ -1,8 +1,17 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Main</title>
 </head>
 <body>
-Cos tu jesttttttttttt
+<form action="/main" method="POST">
+    Tytuł: <input type="text" name="title"><br>
+    <input type="submit" value="Wyszukaj">
+
+    <tr th:each="book : ${books}">
+        <td th:text="${book.bookId}">Id :</td>
+        <td th:text="${book.title}">Title :</td>
+        <td th:text="${book.isbn}">Isbn :</td>
+    </tr>
+</form>
 </body>
 </html>
