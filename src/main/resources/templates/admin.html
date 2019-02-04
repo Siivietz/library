@@ -3,12 +3,12 @@
 
 <h1>Witaj w bibliotece.</h1>
 
-<form action="/admin" method="POST">
+<form action="/admin/add" method="POST">
     Tytuł książki:<br>
-    <input type="text" name="title"th:required="required">
+    <input type="text" name="title" th:required="required">
     <br>
     Autor:<br>
-    <input type="text" name="author_id"th:required="required">
+    <input type="text" name="author_id" th:required="required">
     <br>
     ISBN:<br>
     <input type="number" value="isbn">
@@ -16,8 +16,8 @@
     <br><br>
     <input type="submit" value="Dodaj">
 </form>
-    <form action="/admin" method="POST">
-        Nr.  Autor:    Tytuł:    ISBN
+
+    Nr. Autor: Tytuł: ISBN
     <tr th:each="book : ${books}">
         <td th:text="${book.id}">Id :</td>
         <br>
@@ -27,11 +27,15 @@
         <br>
         <td th:text="${book.isbn}">ISBN :</td>
         <br>
-        <td><button (click) = "deleteBook(book.id)">Usuń</button></td>
+        <td>
+            <form action="/admin/del" method="POST">
+            <input type="hidden" th:value="${book.id}" name="id" />
+            <input type="submit" value="Usuń">
+            </form>
+        </td>
         <br><br>
     </tr>
 
-</form>
 
 </body>
 </html>

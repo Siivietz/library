@@ -9,25 +9,36 @@
         Wyszukaj książkę:<br>
         <form action="/main" method="POST">
             Tytuł książki:<br>
-            <input  type="text" name="title" th:required="required"><br>
+            <input type="text" name="title" th:required="required"><br>
             Autor:<br>
             <input type="text" name="author"><br>
             ISBN:<br>
             <input type="text" name="isbn"><br>
             <input type="submit" value="Wyszukaj">
             <br><br>
-
-            Nr.  Autor:    Tytuł:    ISBN
-            <tr th:each="book : ${books}">
-                <td th:text="${book.id}"></td>
-                <td th:text="${book.author_id}"></td>
-                <td th:text="${book.title}"></td>
-                <td th:text="${book.isbn}"></td>
-            </tr>
-
-
-
         </form>
+    </table>
+</div>
+
+<div>
+    <h2 style="color: cornflowerblue"></h2>
+    <table class="label">
+        <thead>
+        <tr>
+            <td>Nr.</td>
+            <td>Autor</td>
+            <td>Tytuł</td>
+            <td>ISBN</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}">
+            <td th:text="${book.author_id}">
+            <td th:text="${book.title}">
+            <td th:text="${book.isbn}">
+        </tr>
+        </tbody>
     </table>
 </div>
 </body>

@@ -5,11 +5,10 @@ import com.test.library.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 
-import javax.swing.*;
 
 @Controller
 public class AdminController {
@@ -21,20 +20,23 @@ public class AdminController {
     public String getAdminPage() {
         return "admin";
     }
+
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String getMainPage(Model model) {
         model.addAttribute("books", bookService.findAll());
-
         return "admin";
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.POST)
-    public void addBook(Book book) {
+    @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
+    public RedirectView addBook(Book book) {
         bookService.save(book);
+        return new RedirectView("/admin");
     }
 
-    @DeleteMapping(value = "/admin")
-    public void deleteBook(Long id) {
-        bookService.deleteBook(id);
+    @RequestMapping(value = "/admin/del", method = RequestMethod.POST)
+    public RedirectView deleteBookById(Long id) {
+        bookService.deleteBookById(id);
+        return new RedirectView("/admin");
+
     }
 }

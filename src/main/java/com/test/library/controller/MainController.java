@@ -23,6 +23,7 @@ public class MainController {
     @RequestMapping(value = "/main", method = RequestMethod.POST)
     public String getSearchResult(@RequestParam String title, Model model) {
         model.addAttribute("books", bookService.findAllByTitle(title));
+
         return "main";
     }
 }

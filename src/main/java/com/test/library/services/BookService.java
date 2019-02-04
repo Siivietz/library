@@ -2,6 +2,7 @@ package com.test.library.services;
 
 import com.test.library.model.Book;
 import com.test.library.repository.BookRepo;
+import com.test.library.repository.BookReservationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,17 @@ public class BookService {
         return bookRepo.save(book);
     }
 
-    public void deleteBook(Long id) {
-        bookRepo.deleteById(id);
+    public void deleteBookById(Long id) {
+        bookRepo.deleteBookById(id);
+    }
+
+    private BookReservationRepo bookReservationRepo;
+
+    public String reservation(Book book) {
+        if (bookReservationRepo.isReserved(book) == true) {
+            return null;
+        } else {
+            return bookReservationRepo.reservationBook(book);
+        }
     }
 }
