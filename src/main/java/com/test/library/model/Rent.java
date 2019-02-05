@@ -12,9 +12,9 @@ public class Rent {
 
     @Id
     private Long id;
-    private Long cuntomerId;
+    private Long userId;
     private Long volumeId;
     private Long acceptedById;
     private Date rentDate;
-    private Date untillDate;
+    private Date untilDate;
 }

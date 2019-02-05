@@ -2,40 +2,71 @@
 <body>
 
 <h1>Witaj w bibliotece.</h1>
-
-<form action="/admin/add" method="POST">
-    Tytuł książki:<br>
-    <input type="text" name="title" th:required="required">
-    <br>
-    Autor:<br>
-    <input type="text" name="author_id" th:required="required">
-    <br>
-    ISBN:<br>
-    <input type="number" value="isbn">
-    <br>
-    <br><br>
-    <input type="submit" value="Dodaj">
-</form>
-
-    Nr. Autor: Tytuł: ISBN
-    <tr th:each="book : ${books}">
-        <td th:text="${book.id}">Id :</td>
+<div>
+    <!-- wyszukiwanie książek -->
+    <table>
+        Wyszukaj książkę:<br>
+        <form action="/admin" method="POST">
+            Tytuł książki:<br>
+            <input type="text" name="title" th:required="required"><br>
+            Autor:<br>
+            <input type="text" name="author"><br>
+            ISBN:<br>
+            <input type="text" name="isbn"><br>
+            <input type="submit" value="Wyszukaj">
+            <br><br>
+        </form>
+    </table>
+</div>
+<div>
+    <!--dodawanie książki -->
+    <form action="/admin/add" method="POST">
+        Tytuł książki:<br>
+        <input type="text" name="title" th:required="required">
         <br>
-        <td th:text="${book.author_id}">Autor :</td>
+        Autor:<br>
+        <input type="text" name="author_id" th:required="required">
         <br>
-        <td th:text="${book.title}">Title :</td>
+        ISBN:<br>
+        <input type="text" name="isbn">
         <br>
-        <td th:text="${book.isbn}">ISBN :</td>
-        <br>
-        <td>
-            <form action="/admin/del" method="POST">
-            <input type="hidden" th:value="${book.id}" name="id" />
-            <input type="submit" value="Usuń">
-            </form>
-        </td>
         <br><br>
-    </tr>
-
+        <input type="submit" value="Dodaj">
+    </form>
+</div>
+<div>
+    <!--wyswietlanie książek -->
+    <table class="label">
+        <thead>
+        <tr>
+            <td>Nr.</td>
+            <td>Autor</td>
+            <td>Tytuł</td>
+            <td>ISBN</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}" td>
+            <td th:text="${book.author_id}" td>
+            <td th:text="${book.title}" td>
+            <td th:text="${book.isbn}" td>
+            <!-- przycisk usuwania -->
+            <form action="/admin/del" method="POST">
+                <input type="hidden" th:value="${book.id}" name="id"/>
+                <input type="submit" value="Usuń">
+            </form>
+            <!-- przycisk rezerwacji -->
+            <form action="/reserve" method="POST">
+                <input type="hidden" th:value="${book.id}" name="bookId"/>
+                <input type="hidden" th:value=1 name="userId"/>
+                <input type="submit" value="Rezerwacja">
+            </form>
+            <td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

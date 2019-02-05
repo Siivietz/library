@@ -1,7 +1,7 @@
 package com.test.library.controller;
 
-import com.test.library.model.Book;
-import com.test.library.services.BookService;
+import com.test.library.model.Released;
+import com.test.library.services.ReleasedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class AdminController {
 
     @Autowired
-    private BookService bookService;
+    private ReleasedService releasedService;
 
     @RequestMapping("/admin")
     public String getAdminPage() {
@@ -23,19 +23,19 @@ public class AdminController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String getMainPage(Model model) {
-        model.addAttribute("books", bookService.findAll());
+        model.addAttribute("released", releasedService.findAll());
         return "admin";
     }
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
-    public RedirectView addBook(Book book) {
-        bookService.save(book);
+    public RedirectView addReleased(Released released) {
+        releasedService.save(released);
         return new RedirectView("/admin");
     }
 
     @RequestMapping(value = "/admin/del", method = RequestMethod.POST)
-    public RedirectView deleteBookById(Long id) {
-        bookService.deleteBookById(id);
+    public RedirectView deleteReleasedById(Long id) {
+        releasedService.deleteReleasedById(id);
         return new RedirectView("/admin");
 
     }

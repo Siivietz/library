@@ -1,6 +1,6 @@
 package com.test.library.repository;
 
-import com.test.library.model.Book;
+import com.test.library.model.Released;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,12 +8,12 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface BookRepo extends JpaRepository<Book, Long> {
+public interface ReleasedRepo extends JpaRepository<Released, Long> {
 
-    List<Book> findAllByTitle(String title);
+     List<Released> findAllById(Long releasedId);
 
     @Transactional
-    void deleteBookById(Long id);
+    void deleteReleasedById(Long id);
 
 
 }

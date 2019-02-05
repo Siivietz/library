@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @Entity
-public class Customer {
+public class User {
 
     @Id
     private Long id;
