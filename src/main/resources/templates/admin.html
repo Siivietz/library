@@ -1,72 +1,95 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta https-equiv="X-UA-Compatible" content="ID=edge,chrome=1"/>
+    <title>Witaj w bibliotece.</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
 <body>
-
-<h1>Witaj w bibliotece.</h1>
-<div>
-    <!-- wyszukiwanie książek -->
-    <table>
-        Wyszukaj książkę:<br>
-        <form action="/admin" method="POST">
-            Tytuł książki:<br>
-            <input type="text" name="title" th:required="required"><br>
-            Autor:<br>
-            <input type="text" name="author"><br>
-            ISBN:<br>
-            <input type="text" name="isbn"><br>
-            <input type="submit" value="Wyszukaj">
-            <br><br>
-        </form>
-    </table>
-</div>
-<div>
-    <!--dodawanie książki -->
-    <form action="/admin/add" method="POST">
-        Tytuł książki:<br>
-        <input type="text" name="title" th:required="required">
-        <br>
-        Autor:<br>
-        <input type="text" name="author_id" th:required="required">
-        <br>
-        ISBN:<br>
-        <input type="text" name="isbn">
-        <br>
-        <br><br>
-        <input type="submit" value="Dodaj">
-    </form>
-</div>
-<div>
-    <!--wyswietlanie książek -->
-    <table class="label">
-        <thead>
-        <tr>
-            <td>Nr.</td>
-            <td>Autor</td>
-            <td>Tytuł</td>
-            <td>ISBN</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="book : ${books}">
-            <td th:text="${book.id}" td>
-            <td th:text="${book.author_id}" td>
-            <td th:text="${book.title}" td>
-            <td th:text="${book.isbn}" td>
-            <!-- przycisk usuwania -->
-            <form action="/admin/del" method="POST">
-                <input type="hidden" th:value="${book.id}" name="id"/>
-                <input type="submit" value="Usuń">
+<div id="container">
+    <div id="logo">
+        Biblioteka :)
+    </div>
+    <div id=" menu">
+        <div class="option">Wyszukiwanie</div>
+        <div class="option">Wypożyczenia</div>
+        <div class="option">Rezerwacje</div>
+        <div class="option">Edycja książek</div>
+        <div class="option">Edycja użytkownika</div>
+        <div class="option">Logowanie</div>
+        <div class="option">Rejestracja</div>
+        <div style="clear:both;"></div>
+    </div>
+    <div id="wyszukiwanie">
+        <div id="wyszukiwanieL">
+            Wyszukaj książkę:<br>
+            <form action="/admin" method="POST">
+                Tytuł książki:<br>
+                <input type="text" name="title" th:required="required"><br>
+                Autor:<br>
+                <input type="text" name="author"><br>
+                ISBN:<br>
+                <input type="text" name="isbn"><br>
+                <input type="submit" value="Wyszukaj">
+                <br><br>
             </form>
-            <!-- przycisk rezerwacji -->
-            <form action="/reserve" method="POST">
-                <input type="hidden" th:value="${book.id}" name="bookId"/>
-                <input type="hidden" th:value=1 name="userId"/>
-                <input type="submit" value="Rezerwacja">
+            <form action="/admin/add" method="POST">
+                Tytuł książki:<br>
+                <input type="text" name="book.title" th:required="required">
+                <br>
+                Autor:<br>
+                <input type="text" name="book.author_id" th:required="required">
+                <br>
+                ISBN:<br>
+                <input type="text" name="book.isbn">
+                <br>
+                <br><br>
+                <input type="submit" value="Dodaj">
             </form>
-            <td>
-        </tr>
-        </tbody>
-    </table>
+        </div>
+        <div id="wyszukiwanieR">
+            <table class="label">
+                <thead>
+                <tr>
+                    <td>Nr.</td>
+                    <td>Autor</td>
+                    <td>Tytuł</td>
+                    <td>ISBN</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book : ${books}">
+                    <td th:text="${book.id}" td>
+                    <td th:text="${book.author_id}" td>
+                    <td th:text="${book.title}" td>
+                    <td th:text="${book.isbn}" td>
+                        <!-- przycisk usuwania -->
+                        <form action="/admin/del" method="POST">
+                            <input type="hidden" th:value="${book.id}" name="id"/>
+                            <input type="submit" value="Usuń">
+                        </form>
+                        <!-- przycisk rezerwacji -->
+                        <form action="/reserve" method="POST">
+                            <input type="hidden" th:value="${book.id}" name="bookId"/>
+                            <input type="hidden" th:value=1 name="userId"/>
+                            <input type="submit" value="Rezerwuj">
+                        </form>
+                        <!-- przycisk wypozyczenia -->
+                        <form action="/rent" method="POST">
+                            <input type="hidden" th:value="${book.id}" name="bookId"/>
+                            <input type="hidden" th:value=1 name="userId"/>
+                            <input type="submit" value="Wypożycz">
+                        </form>
+                    <td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="stopka">
+        Copyright by me.
+    </div>
 </div>
-
 </body>
 </html>

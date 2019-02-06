@@ -1,0 +1,69 @@
+body
+{
+    background-color: #404040;
+}
+#container
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#logo
+{
+    color: white;
+    margin-top: 20px;
+    font-size: 44px;
+    letter-spacing: 2px;
+}
+#menu
+{
+background-color: beige;
+    margin-top:20px;
+    color: white;
+    padding:10px;
+}
+#wyszukiwanie
+{
+    background-color: sienna;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    height: 500px;
+}
+#wyszukiwanieL
+{
+    float:left;
+    padding: 20px;
+    text-align: center;
+    border-right: 2px dotted #cccccc;
+    width: 138px;
+
+}
+#wyszukiwanieR
+{
+    float:left;
+    padding: 20px;
+    width: 760px;
+
+
+}
+#stopka
+{
+
+}
+.option
+{
+    float: left;
+    min-width: 50px;
+    height: 25px;
+    font-size: 18px;
+    padding:10px;
+    border-right: 2px dotted #444444;
+    opacity:0.8;
+}
+.option:hover
+{
+    background-color: navajowhite;
+    cursor: pointer;
+}

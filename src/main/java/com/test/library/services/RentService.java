@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 public class RentService {
     @Autowired
     private RentRepo rentRepo;
-    public void save(Rent rent) {
-        rentRepo.save(rent);
+
+    public Rent save(Rent rent) {
+        return rentRepo.save(rent);
     }
 }
