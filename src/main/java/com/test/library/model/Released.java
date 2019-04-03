@@ -2,19 +2,21 @@ package com.test.library.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
 @Entity
 public class Released {
     @Id
+    @GeneratedValue
     private Long id;
     private Long year;
     private String city;
     private String name;
     private LocalDate added;
     private LocalDate modified;
-    private Long bookId;
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book bookId;
 }

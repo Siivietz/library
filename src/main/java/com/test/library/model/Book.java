@@ -2,23 +2,24 @@ package com.test.library.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
     private Long isbn;
-    private String author_id;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author_id;
     private Date added;
     private Date modified;
-
+    @OneToMany
+    private List<Released> released;
 
 }

@@ -18,13 +18,13 @@ public class AdminController {
 
     @RequestMapping("/admin")
     public String getAdminPage() {
-        return "admin";
+        return "index";
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String getMainPage(Model model) {
         model.addAttribute("released", releasedService.findAll());
-        return "admin";
+        return "index";
     }
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)

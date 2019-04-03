@@ -16,4 +16,5 @@ public interface ReleasedRepo extends JpaRepository<Released, Long> {
     void deleteReleasedById(Long id);
 
 
+    List<Released> findAllByBookId(Long bookId);
 }

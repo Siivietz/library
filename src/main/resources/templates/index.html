@@ -1,11 +1,12 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <html lang="en">
 <head>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
     <meta charset="UTF-8">
-    <meta https-equiv="X-UA-Compatible" content="ID=edge,chrome=1"/>
     <title>Witaj w bibliotece.</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
+
 <body>
 <div id="container">
     <div id="logo">
@@ -35,16 +36,17 @@
                 <br><br>
             </form>
             <form action="/admin/add" method="POST">
-                Tytuł książki:<br>
-                <input type="text" name="book.title" th:required="required">
+                Rok wydania książki:<br>
+                <input type="text" name="released.year" th:required="required">
                 <br>
-                Autor:<br>
-                <input type="text" name="book.author_id" th:required="required">
+                Miejsce wydania książki:<br>
+                <input type="text" name="released.city" th:required="required">
                 <br>
-                ISBN:<br>
-                <input type="text" name="book.isbn">
+                Tytuł:<br>
+                <input type="text" name="released.name" th:required="required">
                 <br>
-                <br><br>
+                <br>
+                <input type="text" name="released.bookId" th:value=1>
                 <input type="submit" value="Dodaj">
             </form>
         </div>

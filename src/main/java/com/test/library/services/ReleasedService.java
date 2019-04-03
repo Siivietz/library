@@ -31,4 +31,7 @@ public class ReleasedService {
     }
 
 
+    public List<Released> findByBookId(Long bookId) {
+        return releasedRepo.findAllByBookId(bookId);
+    }
 }
